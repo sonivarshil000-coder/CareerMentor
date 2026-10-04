@@ -6,7 +6,7 @@ ApplyDesk helps candidates organize role-specific resumes, discover entry-level 
 
 Requirements: Node.js 24, npm, and Docker Desktop with Compose.
 
-1. Copy `.env.example` to `.env.local` and configure `AUTH_SECRET`, OAuth/email credentials, and `FILE_ENCRYPTION_KEY` before using authenticated features.
+1. Copy `.env.example` to `.env` and configure `AUTH_SECRET`, OAuth/email credentials, and `FILE_ENCRYPTION_KEY` before using authenticated features.
 2. Start PostgreSQL, Redis, and MinIO:
 
    ```sh

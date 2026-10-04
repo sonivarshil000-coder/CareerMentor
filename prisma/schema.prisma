@@ -324,3 +324,13 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+model SignupConsent {
+  email         String    @id
+  consentedAt   DateTime  @default(now())
+  consentVersion String
+  expiresAt     DateTime
+  consumedAt    DateTime?
+
+  @@index([expiresAt, consumedAt])
+}

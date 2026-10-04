@@ -1,69 +1,58 @@
-import Image from "next/image";
+import Link from "next/link";
+import {
+  ArrowRight,
+  Check,
+  FileText,
+  Fingerprint,
+  SearchCheck,
+  ShieldCheck,
+} from "lucide-react";
+import { Logo } from "@/components/logo";
+
+const features = [
+  { icon: FileText, title: "A resume for every role", text: "Keep tailored resumes side by side. See which one fits a job and why." },
+  { icon: SearchCheck, title: "Find fresher-friendly roles", text: "Discover supported company career openings that fit your experience level." },
+  { icon: Fingerprint, title: "Answers grounded in your facts", text: "Your profile, answer bank, and chosen resume are the only sources for application answers." },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="landing">
+      <header className="marketing-nav">
+        <Logo />
+        <nav aria-label="Main navigation"><Link href="#how-it-works">How it works</Link><Link href="#privacy">Privacy</Link><Link href="/pricing">Pricing</Link></nav>
+        <div className="nav-actions"><Link href="/login" className="nav-login">Log in</Link><Link href="/signup" className="button button-primary button-small">Get started <ArrowRight size={15} /></Link></div>
+      </header>
+
+      <section className="hero-section">
+        <div className="hero-copy">
+          <div className="hero-badge"><span className="pulse-dot" /> JOB SEARCH, WITH YOU IN CONTROL</div>
+          <h1>Make room for the work that <em>moves you forward.</em></h1>
+          <p>ApplyDesk finds entry-level roles across the company career pages you choose, matches them to your resumes, and gets each application ready for your review.</p>
+          <div className="hero-actions"><Link href="/signup" className="button button-primary">Create your free workspace <ArrowRight size={17} /></Link><Link href="#how-it-works" className="button button-quiet">See how it works</Link></div>
+          <div className="hero-proof"><ShieldCheck size={16} /><span>No application is submitted before you approve it.</span></div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="preview-card" aria-label="ApplyDesk dashboard preview">
+          <div className="preview-topbar"><div className="preview-brand"><span className="brand-mark mini"><i /><i /><i /><i /></span><b>applydesk</b></div><div className="preview-user">VS</div></div>
+          <div className="preview-content"><div className="preview-greeting"><div><small>MONDAY, OCTOBER 5</small><h2>Your search, at a glance.</h2></div><span className="preview-period">This week⌄</span></div>
+            <div className="preview-stats"><div><small>NEW MATCHES</small><b>08</b><span>+3 since Friday</span></div><div><small>COMPANIES</small><b>04</b><span>Across 2 locations</span></div><div className="stat-warm"><small>YOUR REVIEW</small><b>02</b><span>Ready when you are</span></div></div>
+            <div className="preview-section-head"><b>Top matches</b><span>View all jobs <ArrowRight size={13} /></span></div>
+            <div className="preview-job"><span className="company-avatar mint">S</span><div><b>Junior Data Analyst</b><small>Stripe <i /> Bengaluru · Entry level</small></div><span className="match-score">92%<small>match</small></span></div>
+            <div className="preview-job"><span className="company-avatar lilac">A</span><div><b>AI Product Intern</b><small>Atlassian <i /> Remote · Internship</small></div><span className="match-score">86%<small>match</small></span></div>
+            <div className="preview-footer"><span><ShieldCheck size={14} /> Nothing submits without you</span><span>Preview</span></div>
+          </div>
         </div>
-      </main>
-    </div>
+        <div className="hero-spark spark-one" aria-hidden="true">✳</div><div className="hero-spark spark-two" aria-hidden="true">✳</div>
+      </section>
+
+      <section className="trust-strip"><p>Made for thoughtful applications</p><div><span><Check size={15} /> Company career pages</span><span><Check size={15} /> Public ATS platforms</span><span><Check size={15} /> Human approval first</span></div></section>
+
+      <section className="feature-section" id="how-it-works"><div className="section-intro"><p className="eyebrow">A better way to keep momentum</p><h2>Less searching. More choosing.</h2><p>Keep your job search in one place and make each application feel considered.</p></div><div className="feature-grid">{features.map(({ icon: Icon, title, text }, index) => <article className="feature-card" key={title}><span className="feature-index">0{index + 1}</span><div className="feature-icon"><Icon size={20} /></div><h3>{title}</h3><p>{text}</p><span className="feature-line" /></article>)}</div></section>
+
+      <section className="control-section" id="privacy"><div className="control-card"><div><p className="eyebrow">Your information, your call</p><h2>Helpful automation.<br /><em>Human judgment.</em></h2><p>ApplyDesk can prepare an application using your stored facts. You can edit the draft, ask for missing information, or leave it unsent.</p><Link href="/signup" className="button button-light">Build your workspace <ArrowRight size={16} /></Link></div><ul><li><Check size={16} /> Private resumes and profile data</li><li><Check size={16} /> Clear match reasons and skill gaps</li><li><Check size={16} /> Editable review before submission</li><li><Check size={16} /> Export or delete your data</li></ul></div></section>
+
+      <footer className="marketing-footer"><Logo /><span>© 2026 ApplyDesk</span><div><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><Link href="mailto:support@applydesk.example">Contact</Link></div></footer>
+    </main>
   );
 }
