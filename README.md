@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ApplyDesk
 
-## Getting Started
+ApplyDesk helps candidates organize role-specific resumes, discover entry-level opportunities on company career sites, and prepare application forms for review. The default workflow never submits until the user approves the completed application.
 
-First, run the development server:
+## Local setup
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Requirements: Node.js 24, npm, and Docker Desktop with Compose.
+
+1. Copy `.env.example` to `.env.local` and configure `AUTH_SECRET`, OAuth/email credentials, and `FILE_ENCRYPTION_KEY` before using authenticated features.
+2. Start PostgreSQL, Redis, and MinIO:
+
+   ```sh
+   docker compose up -d
+   ```
+
+3. Install dependencies and create the database schema:
+
+   ```sh
+   npm ci
+   npm run db:generate
+   npm run db:migrate
+   ```
+
+4. Start the web app in one terminal and the worker in another:
+
+   ```sh
+   npm run dev
+   npm run worker
+   ```
+
+The web app runs at `http://localhost:3000`; MinIO's local console runs at `http://localhost:9001`. The credentials in Compose are for local development only.
+
+## Checks
+
+```sh
+npm run lint
+npm run typecheck
+npm test
+npm run test:e2e
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+See `PLAN.md` for architecture, milestones, risks, and release decisions. See `DEPLOY.md` for production deployment once the deployment milestone is complete. See `CLAUDE.md` and the Next.js generated `AGENTS.md` for repository conventions.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Security and scope
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Only supported public ATS APIs and permitted company career pages may be used. The app does not automate LinkedIn, Naukri, Indeed, CAPTCHA challenges, login walls, or sites that prohibit bots. Missing facts and uncertain field mappings pause the application for user input. Resume files and application data are private user data; configure encryption keys and access controls before using real records.
