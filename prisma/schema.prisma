@@ -119,9 +119,9 @@ model Resume {
   userId            String
   targetRole        String
   originalName      String
+  mimeType          String
   objectKey         String           @unique
   contentHash       String
-  encryptedDataKey  String?
   parsedData        Json?
   parseStatus       ResumeParseStatus @default(PENDING)
   parseError        String?

@@ -43,6 +43,14 @@ services:
     volumes:
       - minio_data:/data
 
+  minio-init:
+    image: quay.io/minio/mc:latest
+    depends_on:
+      - minio
+    entrypoint: >
+      /bin/sh -c "until mc alias set applydesk http://minio:9000 applydesk applydesk_dev_secret_change_me; do sleep 2; done; mc mb --ignore-existing applydesk/applydesk-private"
+    restart: on-failure
+
 volumes:
   postgres_data:
   redis_data:
