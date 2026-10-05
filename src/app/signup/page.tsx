@@ -14,7 +14,7 @@ export default function SignupPage() {
           <p className="eyebrow">A free workspace for your next move</p>
           <h2>Apply with context, not copy and paste.</h2>
           <ul>
-            <li>Save up to 3 companies on the Free plan</li>
+            <li>Follow as many companies as you need</li>
             <li>Compare jobs against each of your resumes</li>
             <li>Keep control of every answer and final submission</li>
           </ul>

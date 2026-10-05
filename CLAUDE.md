@@ -1,4 +1,4 @@
-# ApplyDesk project conventions
+# CareerMentor project conventions
 
 ## Commands
 
@@ -35,6 +35,6 @@
 3. Default to approval before final submission. Show a screenshot and every proposed field/answer in an editable review. Auto-submit is opt-in, threshold-limited, and supported-ATS-only if implemented.
 4. Stop on login requirements, CAPTCHA, payment, bot protection, unknown required facts, or low-confidence field mapping. Mark “Needs user action”; never bypass protections.
 5. Protect resumes and personal data: encrypt stored files at rest, scope queries by user ID, capture signup consent, redact logs, and implement export and deletion flows.
-6. Enforce subscription limits server-side. Free plan: at most 3 saved companies and 10 applications per month. Never rely on client-side checks.
+6. Saved companies have no plan limit. Enforce any application limits server-side; never rely on client-side checks.
 7. Validate inputs, rate-limit API routes, keep secrets out of source control, and honor site rate limits and terms.
 8. Maintain tests for matching logic, fresher filtering, ATS adapters with recorded fixtures, and the approval flow. Add Playwright e2e coverage for critical user journeys.

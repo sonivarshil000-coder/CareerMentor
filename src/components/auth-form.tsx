@@ -36,7 +36,7 @@ export function AuthForm({ mode }: AuthFormProps) {
           <input type="checkbox" name="consent" required />
           <span>
             I agree to the <Link href="/privacy">Privacy Notice</Link> and
-            consent to ApplyDesk processing my profile, resumes, and application
+            consent to CareerMentor processing my profile, resumes, and application
             data to provide this service.
           </span>
         </label>
@@ -82,7 +82,7 @@ export function AuthForm({ mode }: AuthFormProps) {
       )}
 
       <p className="auth-switch">
-        {isSignup ? "Already have an account?" : "New to ApplyDesk?"}{" "}
+        {isSignup ? "Already have an account?" : "New to CareerMentor?"}{" "}
         <Link href={isSignup ? "/login" : "/signup"}>
           {isSignup ? "Sign in" : "Create an account"}
         </Link>

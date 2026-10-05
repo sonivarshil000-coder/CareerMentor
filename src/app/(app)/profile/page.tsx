@@ -18,7 +18,7 @@ export default async function ProfilePage() {
 
   return (
     <div className="page-wrap">
-      <header className="page-header"><div><p className="eyebrow">Your facts</p><h1>Profile & answer bank</h1><p>Keep answers current. ApplyDesk can only use facts you store here.</p></div></header>
+      <header className="page-header"><div><p className="eyebrow">Your facts</p><h1>Profile & answer bank</h1><p>Keep answers current. CareerMentor uses facts you store here.</p></div></header>
       <section className="panel form-panel">
         <div className="panel-heading"><div><p className="eyebrow">Contact and work preferences</p><h2>Profile details</h2></div><span className="form-private"><ShieldCheck size={14} /> Private to your account</span></div>
         <form action={saveProfile} className="data-form">

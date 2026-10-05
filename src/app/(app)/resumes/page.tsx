@@ -38,7 +38,7 @@ export default async function ResumesPage() {
 
       <div className="resume-list-heading"><div><p className="eyebrow">Your library</p><h2>{resumes.length ? "Saved resumes" : "Start with your first resume"}</h2></div></div>
       {resumes.length === 0 ? (
-        <div className="panel empty-card resume-empty"><div className="empty-mark"><FileText size={20} /></div><h3>No resumes yet</h3><p>Add one resume for each role you are targeting. ApplyDesk will compare them separately when jobs are found.</p></div>
+        <div className="panel empty-card resume-empty"><div className="empty-mark"><FileText size={20} /></div><h3>No resumes yet</h3><p>Add one resume for each role you are targeting. CareerMentor will compare them separately when jobs are found.</p></div>
       ) : (
         <div className="resume-grid">{resumes.map((resume) => {
           const parsed = getParsedData(resume.parsedData);

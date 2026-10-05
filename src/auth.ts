@@ -39,8 +39,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   session: { strategy: "database" },
   pages: {
     signIn: "/login",
-    verifyRequest: "/login?sent=1",
-    error: "/login?error=auth",
+    verifyRequest: "/login/check-email",
+    error: "/login",
   },
   callbacks: {
     async signIn({ user }) {

@@ -1,13 +1,13 @@
-# ApplyDesk
+# CareerMentor
 
-ApplyDesk helps candidates organize role-specific resumes, discover entry-level opportunities on company career sites, and prepare application forms for review. The default workflow never submits until the user approves the completed application.
+CareerMentor helps candidates organize role-specific resumes, discover entry-level opportunities on company career sites, and prepare job-specific application details from their saved profile.
 
 ## Local setup
 
 Requirements: Node.js 24, npm, and Docker Desktop with Compose.
 
 1. Copy `.env.example` to `.env`. Generate `AUTH_SECRET` and `FILE_ENCRYPTION_KEY` with `openssl rand -base64 32`; configure OAuth/email credentials before using authenticated features.
-2. Start PostgreSQL, Redis, and MinIO:
+2. Start PostgreSQL, Redis, and the local S3-compatible test service:
 
    ```sh
    docker compose up -d
@@ -28,7 +28,7 @@ Requirements: Node.js 24, npm, and Docker Desktop with Compose.
    npm run worker
    ```
 
-The web app runs at `http://localhost:3000`; MinIO's local console runs at `http://localhost:9001`. The credentials in Compose are for local development only.
+The web app runs at `http://localhost:3000`; the S3Mock test endpoint runs at `http://localhost:9000`. S3Mock is for local testing only, not production. Configure a private AWS S3-compatible service before deployment.
 
 ## Checks
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "ApplyDesk | Your job search, organized",
+  title: "CareerMentor | Your job search, organized",
   description:
     "Organize role-specific resumes, discover entry-level jobs, and prepare applications for your review.",
 };

@@ -30,28 +30,24 @@ services:
       timeout: 3s
       retries: 10
 
-  minio:
-    image: quay.io/minio/minio:latest
+  s3mock:
+    image: adobe/s3mock:latest
     restart: unless-stopped
-    command: server /data --console-address ":9001"
     environment:
-      MINIO_ROOT_USER: applydesk
-      MINIO_ROOT_PASSWORD: applydesk_dev_secret_change_me
+      COM_ADOBE_TESTING_S3MOCK_STORE_INITIAL_BUCKETS: applydesk-private
+      COM_ADOBE_TESTING_S3MOCK_STORE_ROOT: /s3mockroot
+      COM_ADOBE_TESTING_S3MOCK_STORE_RETAIN_FILES_ON_EXIT: "true"
     ports:
-      - "9000:9000"
-      - "9001:9001"
+      - "127.0.0.1:9000:9090"
     volumes:
-      - minio_data:/data
-
-  minio-init:
-    image: quay.io/minio/mc:latest
-    depends_on:
-      - minio
-    entrypoint: >
-      /bin/sh -c "until mc alias set applydesk http://minio:9000 applydesk applydesk_dev_secret_change_me; do sleep 2; done; mc mb --ignore-existing applydesk/applydesk-private"
-    restart: on-failure
+      - s3mock_data:/s3mockroot
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:9090/favicon.ico"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
 
 volumes:
   postgres_data:
   redis_data:
-  minio_data:
+  s3mock_data:

@@ -3,7 +3,7 @@ import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
 import mammoth from "mammoth";
 import { createHash } from "node:crypto";
 import { z } from "zod";
-import { db } from "@/lib/db";
+import { db } from "./db";
 
 export const resumeDataSchema = z.object({
   skills: z.array(z.string().trim().min(1).max(80)).max(100),

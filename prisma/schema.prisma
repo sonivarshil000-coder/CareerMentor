@@ -147,6 +147,7 @@ model Company {
   discoveryEnabled Boolean     @default(true)
   lastScannedAt    DateTime?
   nextScanAt       DateTime?
+  lastScanError    String?
   createdAt        DateTime    @default(now())
   updatedAt        DateTime    @updatedAt
   user             User        @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -166,6 +167,7 @@ model Job {
   employment  String?
   url         String
   description String
+  descriptionText String
   firstSeenAt DateTime    @default(now())
   lastSeenAt  DateTime    @default(now())
   closedAt    DateTime?
@@ -250,6 +252,7 @@ model Notification {
   id        String           @id @default(cuid())
   userId    String
   kind      NotificationKind
+  dedupeKey String?          @unique
   title     String
   body      String
   href      String?

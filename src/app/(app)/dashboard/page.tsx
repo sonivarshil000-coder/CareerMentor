@@ -5,7 +5,7 @@ import { requireUser } from "@/lib/auth/require-user";
 
 export default async function DashboardPage() {
   const user = await requireUser();
-  const [companyCount, resumeCount, openApplications, pendingApprovals] =
+  const [companyCount, resumeCount, openApplications, pendingApprovals, matchCount] =
     await Promise.all([
       db.company.count({ where: { userId: user.id } }),
       db.resume.count({ where: { userId: user.id } }),
@@ -13,12 +13,13 @@ export default async function DashboardPage() {
         where: { userId: user.id, status: { in: ["FOUND", "NEEDS_APPROVAL", "APPLIED", "INTERVIEW"] } },
       }),
       db.application.count({ where: { userId: user.id, status: "NEEDS_APPROVAL" } }),
+      db.match.count({ where: { userId: user.id } }),
     ]);
 
   const steps = [
     { done: resumeCount > 0, title: "Add a role-specific resume", description: "Your resume stays private and is used only for matches you review.", href: "/resumes", action: "Add resume", icon: FileText },
     { done: companyCount > 0, title: "Save a company career page", description: "We only look at supported company sites and public ATS pages.", href: "/companies", action: "Add company", icon: Building2 },
-    { done: openApplications > 0, title: "Review your first job matches", description: "See why each role fits, including matched skills and gaps.", href: "/jobs", action: "View jobs", icon: Search },
+    { done: matchCount > 0, title: "Review your first job matches", description: "See why each role fits, including matched skills and gaps.", href: "/jobs", action: "View jobs", icon: Search },
   ];
 
   return (
@@ -28,7 +29,7 @@ export default async function DashboardPage() {
         <Link className="button button-primary" href="/companies">Add a company <ArrowRight size={16} /></Link>
       </header>
       <div className="metric-grid">
-        <Metric label="Saved companies" value={companyCount} caption="of 3 on Free" />
+        <Metric label="Saved companies" value={companyCount} caption="No company cap" />
         <Metric label="Role-specific resumes" value={resumeCount} caption="Ready for matching" />
         <Metric label="Applications" value={openApplications} caption="In your tracker" />
         <Metric label="Needs your review" value={pendingApprovals} caption="Nothing submits without you" highlight />

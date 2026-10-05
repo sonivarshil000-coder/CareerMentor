@@ -28,13 +28,13 @@ export default function Home() {
         <div className="hero-copy">
           <div className="hero-badge"><span className="pulse-dot" /> JOB SEARCH, WITH YOU IN CONTROL</div>
           <h1>Make room for the work that <em>moves you forward.</em></h1>
-          <p>ApplyDesk finds entry-level roles across the company career pages you choose, matches them to your resumes, and gets each application ready for your review.</p>
+          <p>CareerMentor finds entry-level roles across the company career pages you choose, matches them to your resumes, and prepares job-specific application details.</p>
           <div className="hero-actions"><Link href="/signup" className="button button-primary">Create your free workspace <ArrowRight size={17} /></Link><Link href="#how-it-works" className="button button-quiet">See how it works</Link></div>
           <div className="hero-proof"><ShieldCheck size={16} /><span>No application is submitted before you approve it.</span></div>
         </div>
 
-        <div className="preview-card" aria-label="ApplyDesk dashboard preview">
-          <div className="preview-topbar"><div className="preview-brand"><span className="brand-mark mini"><i /><i /><i /><i /></span><b>applydesk</b></div><div className="preview-user">VS</div></div>
+        <div className="preview-card" aria-label="CareerMentor dashboard preview">
+          <div className="preview-topbar"><div className="preview-brand"><span className="brand-mark mini"><i /><i /><i /><i /></span><b>CareerMentor</b></div><div className="preview-user">VS</div></div>
           <div className="preview-content"><div className="preview-greeting"><div><small>MONDAY, OCTOBER 5</small><h2>Your search, at a glance.</h2></div><span className="preview-period">This week⌄</span></div>
             <div className="preview-stats"><div><small>NEW MATCHES</small><b>08</b><span>+3 since Friday</span></div><div><small>COMPANIES</small><b>04</b><span>Across 2 locations</span></div><div className="stat-warm"><small>YOUR REVIEW</small><b>02</b><span>Ready when you are</span></div></div>
             <div className="preview-section-head"><b>Top matches</b><span>View all jobs <ArrowRight size={13} /></span></div>
@@ -50,9 +50,9 @@ export default function Home() {
 
       <section className="feature-section" id="how-it-works"><div className="section-intro"><p className="eyebrow">A better way to keep momentum</p><h2>Less searching. More choosing.</h2><p>Keep your job search in one place and make each application feel considered.</p></div><div className="feature-grid">{features.map(({ icon: Icon, title, text }, index) => <article className="feature-card" key={title}><span className="feature-index">0{index + 1}</span><div className="feature-icon"><Icon size={20} /></div><h3>{title}</h3><p>{text}</p><span className="feature-line" /></article>)}</div></section>
 
-      <section className="control-section" id="privacy"><div className="control-card"><div><p className="eyebrow">Your information, your call</p><h2>Helpful automation.<br /><em>Human judgment.</em></h2><p>ApplyDesk can prepare an application using your stored facts. You can edit the draft, ask for missing information, or leave it unsent.</p><Link href="/signup" className="button button-light">Build your workspace <ArrowRight size={16} /></Link></div><ul><li><Check size={16} /> Private resumes and profile data</li><li><Check size={16} /> Clear match reasons and skill gaps</li><li><Check size={16} /> Editable review before submission</li><li><Check size={16} /> Export or delete your data</li></ul></div></section>
+      <section className="control-section" id="privacy"><div className="control-card"><div><p className="eyebrow">Your information, your call</p><h2>Helpful automation.<br /><em>Human judgment.</em></h2><p>CareerMentor reuses the facts you save and tailors application details to each role. You can review and correct them before they are used.</p><Link href="/signup" className="button button-light">Build your workspace <ArrowRight size={16} /></Link></div><ul><li><Check size={16} /> Private resumes and profile data</li><li><Check size={16} /> Clear match reasons and skill gaps</li><li><Check size={16} /> Job-specific application details</li><li><Check size={16} /> Export or delete your data</li></ul></div></section>
 
-      <footer className="marketing-footer"><Logo /><span>© 2026 ApplyDesk</span><div><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><Link href="mailto:support@applydesk.example">Contact</Link></div></footer>
+      <footer className="marketing-footer"><Logo /><span>© 2026 CareerMentor</span><div><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><Link href="mailto:support@careermentor.example">Contact</Link></div></footer>
     </main>
   );
 }
